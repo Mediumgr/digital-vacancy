@@ -36,12 +36,13 @@
     </div>
     <p class="content__text">
       Создаем и&nbsp;развиваем сервисы одного из&nbsp;крупнейших
-      банков&nbsp;&mdash; ПСБ. Нашими продуктами пользуются миллионы людей.
+      банков&nbsp;&mdash; ПСБ.<br />Нашими продуктами пользуются миллионы
+      людей.<br />
       И&nbsp;нам всегда нужны классные специалисты, которые усилят команду
     </p>
   </div>
   <section class="section">
-    <p class="section__title">Системный аналитик</p>
+    <p class="section__topTitle">Системный аналитик</p>
     <div class="section__requirements">
       <div class="section__requirements_block">
         Требуемый опыт работы: 3–6 лет
@@ -50,31 +51,83 @@
         Полная занятость, полный день
       </div>
     </div>
-    <div class="section__commonStyle">
-      <p class="section__description_title">Описание проекта:</p>
-      <p class="section__description_text">
+    <div class="section__box">
+      <p class="section__title">Описание проекта:</p>
+      <p class="section__text">
         Разрабатываем собственные решения: системы ДБО для юридических
         и&nbsp;физических лиц, внутренние банковские приложения. Используем
         стек: Angular, C#, Java, Kafka, Postgres. Работаем по&nbsp;Agile
         (70&nbsp;команд) и&nbsp;по&nbsp;Waterfall.
       </p>
     </div>
-    <div class="section__commonStyle">
-      <p class="section__key_title">Ключевые задачи:</p>
-      <ul class="section__key_text">
-        <li>Участие в разработке новых продуктов и платформ</li>
-        <li>Сбор, анализ, формирование и согласование требований</li>
-        <li>Помощь команде на стадии разработки и тестирования</li>
+    <div class="section__box">
+      <p class="section__title">Ключевые задачи:</p>
+      <ul class="section__text">
+        <li>Участие в&nbsp;разработке новых продуктов и&nbsp;платформ</li>
+        <li>Сбор, анализ, формирование и&nbsp;согласование требований</li>
+        <li>Помощь команде на&nbsp;стадии разработки и&nbsp;тестирования</li>
         <li>
-          Участие в разработке архитектурных решений и проектировании систем
+          Участие в&nbsp;разработке архитектурных решений и&nbsp;проектировании
+          систем
         </li>
         <li>
-          Участие в формировании и поддержании общего информационного
-          пространства подразделения в Confluence
+          Участие в&nbsp;формировании и&nbsp;поддержании общего информационного
+          пространства подразделения в&nbsp;Confluence
         </li>
       </ul>
     </div>
+    <div class="section__box">
+      <p class="section__title">Что важно для нас:</p>
+      <ul class="section__text">
+        <li>Высшее образование</li>
+        <li>Опыт работы в&nbsp;должности системного аналитика</li>
+        <li>
+          Способность грамотно и&nbsp;последовательно составить техническое
+          задание
+        </li>
+        <li>
+          Готовность и&nbsp;желание погружаться в&nbsp;технические детали
+          разрабатываемого функционала
+        </li>
+        <li>
+          Развитые коммуникационные навыки, умение находить общий язык
+          с&nbsp;бизнес-заказчиками, с&nbsp;разработчиками
+        </li>
+        <li>Знание и&nbsp;опыт работы с&nbsp;SQL</li>
+        <li>
+          Понимание принципов интеграции нескольких систем (SOAP, REST, MQ)
+        </li>
+        <li>Знание нотаций UML, BPMN или других</li>
+        <li>Опыт работы с&nbsp;Jira, Confluence</li>
+      </ul>
+    </div>
+    <div class="section__box">
+      <p class="section__title">Ключевые задачи:</p>
+      <ul class="section__text">
+        <li>
+          График работы 5/2 (пн-чт с&nbsp;9:00 до&nbsp;18:00, сокращенный
+          рабочий день по&nbsp;пятницам)
+        </li>
+        <li>Возможность удаленного формата работы</li>
+        <li>Оформление по&nbsp;ТК&nbsp;РФ</li>
+        <li>Конкурентный уровень дохода: оклад + премии</li>
+        <li>Кафетерий льгот: ДМС, оплата отдыха или фитнес по&nbsp;выбору</li>
+        <li>Страховка для выезжающих за&nbsp;границу</li>
+        <li>Доплаты к&nbsp;отпуску и&nbsp;больничному</li>
+        <li>
+          Дополнительные льготы при заключении брака и&nbsp;рождении детей
+        </li>
+        <li>Социальная поддержка при сложных жизненных ситуациях</li>
+        <li>Льготное кредитование для сотрудников</li>
+        <li>Обучение в&nbsp;корпоративном университете банка</li>
+        <li>Корпоративная библиотека</li>
+      </ul>
+    </div>
   </section>
+  <footer class="footer">
+    <div class="footer__logo">© ПСБ</div>
+    <div class="footer__email">Почта</div>
+  </footer>
 </template>
 
 <script setup>
@@ -148,10 +201,6 @@ header {
   }
 
   @include mq(1440) {
-    padding: 4rem 8rem 0;
-  }
-
-  @include mq(1920) {
     padding: 5rem 10rem 0;
   }
 
@@ -166,25 +215,21 @@ header {
   &__text {
     color: #fff;
     text-align: center;
-    letter-spacing: -0.128rem;
     line-height: 120%;
     padding: 4rem 0;
 
     @include mq(768) {
       font-size: 1.7rem;
-      padding: 8rem 0;
     }
 
     @include mq(1024) {
       font-size: 2.26rem;
+      padding: 8rem 0;
     }
 
     @include mq(1440) {
-      font-size: 3rem;
-    }
-
-    @include mq(1920) {
-      font-size: 4.26rem;
+      font-size: 3.2rem;
+      letter-spacing: -0.128rem;
     }
   }
   &__menu {
@@ -204,7 +249,7 @@ header {
 
       @include mq(768) {
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         grid-column-gap: 1rem;
       }
@@ -282,16 +327,13 @@ header {
           width: auto;
           background: none;
           border: 0.1rem solid rgba(255, 255, 255, 0.2);
+          border-radius: 2.7rem;
           padding: 1rem 2rem;
           margin: 0;
         }
 
         @include mq(1024) {
           padding: 1.3rem 2.6rem;
-        }
-
-        @include mq(1920) {
-          border-radius: 2.7rem;
         }
         > .link {
           line-height: 120%;
@@ -341,26 +383,16 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   padding: 1rem 2rem;
 
   @include mq(768) {
-    padding: 8rem 0;
+    padding: 8rem 2rem;
   }
-
-  &__commonStyle {
-    display: flex;
-    flex-direction: column;
-    grid-row-gap: 1.6rem;
-    padding: 1rem 0;
-    border-radius: 5rem;
-    background: #fff;
-    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-    padding: 2rem;
-    margin: 1rem 0;
+  @include mq(1024) {
+    padding: 8rem 16.6rem 2rem;
   }
-
-  &__title {
+  &__topTitle {
     font-size: 2rem;
     opacity: 0.8;
     background: linear-gradient(
@@ -376,12 +408,62 @@ header {
     line-height: 120%;
 
     @include mq(768) {
-      font-size: 2rem;
-      padding-bottom: 1.5rem;
+      font-size: 5.5rem;
+      padding-bottom: 3.2rem;
     }
-    @include mq(1920) {
+    @include mq(1024) {
+      font-size: 8.5rem;
+    }
+    @include mq(1440) {
       font-size: 10rem;
-      padding-bottom: 3rem;
+    }
+  }
+  &__box {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 1rem;
+    border-radius: 5rem;
+    background: #fff;
+    box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
+    padding: 2rem;
+    margin: 1rem 0;
+    width: 100%;
+
+    @include mq(768) {
+      grid-row-gap: 1.6rem;
+      padding: 4rem;
+      margin: 2rem 0;
+    }
+
+    @include mq(1024) {
+      padding: 6rem;
+    }
+  }
+  &__title {
+    color: #13144b;
+    letter-spacing: -0.096rem;
+
+    @include mq(768) {
+      font-size: 2rem;
+    }
+    @include mq(1024) {
+      font-size: 3.2rem;
+    }
+  }
+  &__text {
+    font-weight: 400;
+    opacity: 0.8;
+    letter-spacing: -0.084rem;
+    color: #13144b;
+    line-height: 120%;
+
+    @include mq(1024) {
+      font-size: 2.8rem;
+    }
+    > li {
+      list-style-type: initial;
+      color: #13144b;
+      opacity: 0.8;
     }
   }
   &__requirements {
@@ -392,11 +474,8 @@ header {
 
     @include mq(768) {
       flex-direction: row;
-      padding-bottom: 1.5rem;
-    }
-
-    @include mq(1920) {
-      padding-bottom: 6rem;
+      padding-bottom: 4rem;
+      grid-column-gap: 2.8rem;
     }
 
     &_block {
@@ -408,36 +487,49 @@ header {
       box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
       text-align: center;
 
-      @include mq(1920) {
+      @include mq(768) {
+        font-size: 2rem;
+        padding: 2.5rem;
+      }
+      @include mq(1024) {
         font-size: 2.4rem;
         padding: 4rem;
       }
     }
   }
-  &__description {
-    &_title {
-      color: #13144b;
-      letter-spacing: -0.096rem;
-      @include mq(1920) {
-        font-size: 3.2rem;
-      }
-    }
-    &_text {
-      color: #13144b;
-      font-weight: 400;
-      line-height: 120%;
-      letter-spacing: -0.084rem;
-      opacity: 0.8;
-      @include mq(1920) {
-        font-size: 2.8rem;
-      }
-    }
+}
+
+ul {
+  padding-left: 2rem;
+  @include mq(768) {
+    padding-left: 3rem;
   }
-  &__key {
-    &_text {
-      font-weight: 400;
-      opacity: 0.8;
-      letter-spacing: -0.084rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: url("../assets/images/gradient_footer.png") center/cover;
+  padding: 1rem 2rem;
+
+  @include mq(768) {
+    padding: 2rem 2rem 1rem 2rem;
+  }
+  @include mq(1024) {
+    padding: 2rem 16.6rem 2rem;
+  }
+  @include mq(1440) {
+    padding: 3.5rem 10rem 3.5rem;
+  }
+
+  &__logo,
+  &__email {
+    color: #fff;
+    letter-spacing: -0.0853rem;
+    @include mq(1024) {
+      font-size: 2.13rem;
+      line-height: 140%;
     }
   }
 }
