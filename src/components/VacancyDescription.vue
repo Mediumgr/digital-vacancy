@@ -1,4 +1,5 @@
 <template>
+  <div ref="shadow" class="shadow" @click.stop="close()"></div>
   <div class="content">
     <div class="content__header">
       <header>
@@ -19,20 +20,19 @@
         <ul class="content__menu_list">
           <span class="content__menu_links-line"></span>
           <li class="content__menu_links-item" @click.stop="goToPage('Habr')">
-            <a class="link">Хабр</a>
+            <p class="link">Хабр</p>
           </li>
           <li class="content__menu_links-item" @click.stop="goToPage('Rutube')">
-            <a class="link">Rutube</a>
+            <p class="link">Rutube</p>
           </li>
           <li class="content__menu_links-item" @click.stop="goToPage('Telega')">
-            <a class="link">Телеграм</a>
+            <p class="link">Телеграм</p>
           </li>
           <li class="content__menu_links-item" @click.stop="goToPage('Email')">
-            <a class="link">Почта</a>
+            <p class="link">Почта</p>
           </li>
         </ul>
       </div>
-      <div class="substrate" v-if="showBlur" @click.stop="close()"></div>
     </div>
     <p class="content__text">
       Создаем и&nbsp;развиваем сервисы одного из&nbsp;крупнейших
@@ -124,25 +124,59 @@
       </ul>
     </div>
   </section>
+  <div class="buttons">
+    <BaseButton @click.stop="openModal()"
+      ><span>Отправить резюме</span></BaseButton
+    >
+    <BaseButton @click.stop="goToPage('Recommend')"
+      ><span>Рекомендовать друга</span></BaseButton
+    >
+  </div>
+  <Teleport to="body">
+    <FormVacancy
+      :modalStatus="showModal"
+      @closeModal="toggleModal($event)"
+    ></FormVacancy>
+  </Teleport>
   <footer class="footer">
-    <div class="footer__logo">© ПСБ</div>
+    <div class="footer__logo">&copy; ПСБ</div>
     <div class="footer__email">Почта</div>
   </footer>
 </template>
 
 <script setup>
+import FormVacancy from "./FormVacancy.vue";
 import { onMounted, ref } from "vue";
-const showBlur = ref(false);
+
+const shadow = ref(null);
 const menuList = ref(null);
+const showModal = ref(false);
+
+const openModal = () => {
+  showModal.value = true;
+  shadow.value.classList.add("active");
+  document.body.style.overflow = "hidden";
+};
+
+const toggleModal = (event) => {
+  let isModalWrapperClick = event.target?.classList.contains("modal-wrapper");
+  let isCrossClick = event.target?.classList.contains("cross");
+
+  if (isModalWrapperClick || isCrossClick || event === "close") {
+    showModal.value = false;
+    shadow.value.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+};
 
 const checked = () => {
-  menuList.value.classList.add("content__menu_links_active");
-  showBlur.value = true;
+  menuList.value.classList.add("content__menu_links-active");
+  shadow.value.classList.add("active");
 };
 
 const close = () => {
-  menuList.value.classList.remove("content__menu_links_active");
-  showBlur.value = false;
+  menuList.value.classList.remove("content__menu_links-active");
+  shadow.value.classList.remove("active");
 };
 
 const goToPage = (link) => {
@@ -158,6 +192,9 @@ const goToPage = (link) => {
       break;
     case "Email":
       window.open("mailto:BIT_communications@psbank.ru", "_blank");
+      break;
+    case "Recommend":
+      window.open("https://work.psblab.ru", "_blank");
       break;
   }
 };
@@ -194,12 +231,14 @@ header {
 }
 .content {
   background: url("../assets/images/gradient.png") center/cover;
-  padding: 2rem 2rem 0 2rem;
+  padding: 2rem 2rem 0;
 
-  @include mq(1024) {
-    padding: 2rem 16.6rem 0;
+  @include mq(768) {
+    padding: 2rem 5rem 0;
   }
-
+  @include mq(1024) {
+    padding: 2rem 10rem 0;
+  }
   @include mq(1440) {
     padding: 5rem 10rem 0;
   }
@@ -270,7 +309,7 @@ header {
         background: none;
       }
 
-      &_active {
+      &-active {
         bottom: 0;
       }
 
@@ -285,8 +324,7 @@ header {
         margin: 2rem auto 2rem;
         text-align: center;
         cursor: pointer;
-        opacity: 0;
-        animation: appearance 800ms ease-out forwards;
+        transition: all 0.5s ease;
 
         &:hover {
           background: #fff;
@@ -367,16 +405,22 @@ header {
   }
 }
 
-.substrate {
+.shadow {
   position: fixed;
-  z-index: 1;
+  z-index: -1;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
   width: 100vw;
-  background: rgba(24, 24, 34, 0.4);
+  opacity: 0;
   backdrop-filter: blur(0.5rem);
+  transition: all 1s ease;
+  &.active {
+    opacity: 1;
+    z-index: 1;
+    background: rgba(24, 24, 34, 0.4);
+  }
 }
 
 .section {
@@ -387,10 +431,10 @@ header {
   padding: 1rem 2rem;
 
   @include mq(768) {
-    padding: 8rem 2rem;
+    padding: 8rem 7rem;
   }
   @include mq(1024) {
-    padding: 8rem 16.6rem 2rem;
+    padding: 8rem 24rem 2rem;
   }
   &__topTitle {
     font-size: 2rem;
@@ -412,10 +456,7 @@ header {
       padding-bottom: 3.2rem;
     }
     @include mq(1024) {
-      font-size: 8.5rem;
-    }
-    @include mq(1440) {
-      font-size: 10rem;
+      font-size: 7.5rem;
     }
   }
   &__box {
@@ -506,6 +547,22 @@ ul {
   }
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem 3rem;
+
+  @include mq(768) {
+    padding: 0 7rem 8rem;
+  }
+  @include mq(1024) {
+    padding: 9rem 24rem 10rem;
+  }
+  & > button span {
+    position: relative;
+  }
+}
 .footer {
   display: flex;
   justify-content: space-between;
@@ -514,10 +571,10 @@ ul {
   padding: 1rem 2rem;
 
   @include mq(768) {
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 2rem 5rem 2rem;
   }
   @include mq(1024) {
-    padding: 2rem 16.6rem 2rem;
+    padding: 2rem 10rem 2rem;
   }
   @include mq(1440) {
     padding: 3.5rem 10rem 3.5rem;
@@ -531,15 +588,6 @@ ul {
       font-size: 2.13rem;
       line-height: 140%;
     }
-  }
-}
-
-@keyframes appearance {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 </style>
