@@ -8,7 +8,11 @@
             srcset="@/assets/images/logo.svg"
             media="(min-width: 768px)"
           />
-          <img src="@/assets/images/logo-mobile.svg" alt="logo" />
+          <img
+            class="content__menu_image"
+            src="@/assets/images/logo-mobile.svg"
+            alt="logo"
+          />
         </picture>
         <img
           @click.stop="checked()"
@@ -124,13 +128,22 @@
       </ul>
     </div>
   </section>
-  <div class="buttons">
-    <BaseButton @click.stop="openModal()"
-      ><span>Отправить резюме</span></BaseButton
-    >
-    <BaseButton @click.stop="goToPage('Recommend')"
-      ><span>Рекомендовать друга</span></BaseButton
-    >
+  <p class="resume__title">Мы ждем ваше резюме</p>
+  <div class="resume__content">
+    <div class="resume__content_block">
+      <p class="resume__content_title">Найти стабильную работу</p>
+      <BaseButton @click.stop="openModal()" class="resume__content_btn"
+        ><span>ОТПРАВИТЬ РЕЗЮМЕ</span></BaseButton
+      >
+    </div>
+    <div class="resume__content_block">
+      <p class="resume__content_title">Получить 100 000 рублей</p>
+      <BaseButton
+        @click.stop="goToPage('Recommend')"
+        class="resume__content_btn"
+        ><span>РЕКОМЕНДОВАТЬ ДРУГА</span></BaseButton
+      >
+    </div>
   </div>
   <Teleport to="body">
     <FormVacancy
@@ -248,6 +261,7 @@ header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      align-items: flex-end;
     }
   }
 
@@ -258,7 +272,7 @@ header {
     padding: 4rem 0;
 
     @include mq(768) {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
     }
 
     @include mq(1024) {
@@ -279,10 +293,15 @@ header {
         display: none;
       }
     }
+    &_image {
+      height: 3.7rem;
+      @include mq(1024) {
+        height: auto;
+      }
+    }
     &_list {
       color: #fff;
       text-align: center;
-      font-size: 2.1rem;
       line-height: 140%;
       letter-spacing: -0.0853rem;
 
@@ -428,16 +447,21 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding: 1rem 2rem;
+  padding: 3rem 2rem 2rem;
 
   @include mq(768) {
-    padding: 8rem 7rem;
+    padding: 5rem 7rem 4rem;
   }
   @include mq(1024) {
-    padding: 8rem 24rem 2rem;
+    padding: 8rem 24rem 0;
+  }
+  @include mq(1440) {
+    padding: 8rem 0 0;
+    width: 96rem;
+    margin: 0 auto;
   }
   &__topTitle {
-    font-size: 2rem;
+    font-size: 3rem;
     opacity: 0.8;
     background: linear-gradient(
       86deg,
@@ -450,9 +474,10 @@ header {
     -webkit-text-fill-color: transparent;
     padding-bottom: 1rem;
     line-height: 120%;
+    white-space: nowrap;
 
     @include mq(768) {
-      font-size: 5.5rem;
+      font-size: 6rem;
       padding-bottom: 3.2rem;
     }
     @include mq(1024) {
@@ -467,13 +492,12 @@ header {
     background: #fff;
     box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
     padding: 2rem;
-    margin: 1rem 0;
+    margin-top: 2rem;
     width: 100%;
 
     @include mq(768) {
       grid-row-gap: 1.6rem;
       padding: 4rem;
-      margin: 2rem 0;
     }
 
     @include mq(1024) {
@@ -488,7 +512,8 @@ header {
       font-size: 2rem;
     }
     @include mq(1024) {
-      font-size: 3.2rem;
+      font-size: 2.4rem;
+      line-height: 2.85rem;
     }
   }
   &__text {
@@ -499,7 +524,7 @@ header {
     line-height: 120%;
 
     @include mq(1024) {
-      font-size: 2.8rem;
+      font-size: 2.1rem;
     }
     > li {
       list-style-type: initial;
@@ -515,7 +540,7 @@ header {
 
     @include mq(768) {
       flex-direction: row;
-      padding-bottom: 4rem;
+      padding-bottom: 2rem;
       grid-column-gap: 2.8rem;
     }
 
@@ -529,12 +554,12 @@ header {
       text-align: center;
 
       @include mq(768) {
-        font-size: 2rem;
         padding: 2.5rem;
+        line-height: 2.85rem;
       }
       @include mq(1024) {
-        font-size: 2.4rem;
-        padding: 4rem;
+        padding: 2.7rem 3.5rem;
+        font-size: 1.8rem;
       }
     }
   }
@@ -547,22 +572,96 @@ ul {
   }
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 2rem 3rem;
+.resume {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    grid-row-gap: 2rem;
+    padding: 2rem 2rem 3rem;
 
-  @include mq(768) {
-    padding: 0 7rem 8rem;
+    @include mq(768) {
+      padding: 0 7rem 8rem;
+    }
+    @include mq(1024) {
+      flex-direction: row;
+      padding: 9rem 18rem 10rem;
+      grid-column-gap: 6rem;
+    }
+    @include mq(1440) {
+      grid-column-gap: 8rem;
+    }
+    &_block {
+      padding: 2rem;
+      border-radius: 26px;
+      box-shadow: 0 0.67rem 2.67rem 0 #00000012;
+      width: 100%;
+      @include mq(1024) {
+        padding: 3rem;
+      }
+    }
+    &_title {
+      font-size: 1.8rem;
+      text-align: center;
+      background: linear-gradient(
+        85.82deg,
+        #8e54f5 3.39%,
+        #ff4236 50.02%,
+        #ffb55c 96.64%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-bottom: 1rem;
+      @include mq(768) {
+        font-size: 2.8rem;
+        line-height: 3.8rem;
+        padding-bottom: 2rem;
+      }
+      @include mq(1440) {
+        font-size: 3.3rem;
+      }
+    }
+    &_btn {
+      position: relative;
+      border-radius: 26px;
+      width: 100%;
+      @include mq(768) {
+        padding: 2.6rem;
+      }
+      @include mq(1024) {
+        font-size: 2rem;
+      }
+      @include mq(1440) {
+        font-size: 2.4rem;
+      }
+      & > span {
+        position: relative;
+      }
+    }
   }
-  @include mq(1024) {
-    padding: 9rem 24rem 10rem;
-  }
-  & > button span {
-    position: relative;
+  &__title {
+    padding: 1rem 2rem 0;
+    text-align: center;
+    font-size: 3.5rem;
+    line-height: 90%;
+    @include mq(768) {
+      padding: 0 7rem 4rem;
+      font-size: 8rem;
+    }
+    @include mq(1024) {
+      padding: 7rem 24rem 0;
+      font-size: 11rem;
+    }
+    @include mq(1440) {
+      padding: 7rem 17rem 0;
+      font-size: 15rem;
+      letter-spacing: -0.9rem;
+    }
   }
 }
+
 .footer {
   display: flex;
   justify-content: space-between;
