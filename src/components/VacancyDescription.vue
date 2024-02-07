@@ -425,19 +425,18 @@ header {
 }
 
 .shadow {
-  position: fixed;
   z-index: -1;
-  left: 0;
+  position: fixed;
   top: 0;
-  right: 0;
   bottom: 0;
-  width: 100vw;
+  left: 0;
+  right: 0;
   opacity: 0;
   backdrop-filter: blur(0.5rem);
   transition: all 1s ease;
   &.active {
-    opacity: 1;
     z-index: 1;
+    opacity: 1;
     background: rgba(24, 24, 34, 0.4);
   }
 }

@@ -74,14 +74,17 @@
         <span class="loader" v-if="loader"></span>
       </form>
     </div>
-    <FormStatus
+    <div
       v-else-if="modalStatus && !status.form"
-      @customEvent="handleEvent($event)"
-      @click.stop="$emit('closeModal', 'close')"
-      :status="status"
-      key="status"
+      @click.stop="$emit('closeModal', $event)"
       class="modal-wrapper"
-    ></FormStatus>
+      key="status"
+    >
+      <FormStatus
+        @customEvent="handleEvent($event)"
+        :status="status"
+      ></FormStatus>
+    </div>
   </Transition>
 </template>
 
@@ -126,7 +129,6 @@ const handleEvent = (action) => {
   }
 };
 
-/* eslint-disable */
 const regExp = ref({
   name: /^[a-zа-я]+\s[a-zа-я]+(\s[a-zа-я]+)?$/i,
 
@@ -222,12 +224,12 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .modal-wrapper {
-  position: fixed;
   z-index: 2;
+  position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
