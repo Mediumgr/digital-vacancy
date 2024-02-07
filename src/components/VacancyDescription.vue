@@ -106,7 +106,7 @@
       </ul>
     </div>
     <div class="section__box">
-      <p class="section__title">Ключевые задачи:</p>
+      <p class="section__title">Что предлагаем:</p>
       <ul class="section__text">
         <li>
           График работы 5/2 (пн-чт с&nbsp;9:00 до&nbsp;18:00, сокращенный
